@@ -24,7 +24,7 @@ const pubMessage = () => {
 };
 
 app.get("/", (req, res) => {
-  console.log(`Sending message:`, req.body);
+  console.log(`Sending message:`, "channel_name");
   pubMessage();
   return res.sendStatus(200);
 });
