@@ -8,9 +8,7 @@ var redis = new Redis({
 const sub = async () => {
   while (1) {
     // read events from the beginning of stream 'events'
-    const res = await redis.sendCommand(
-      new Redis.Command("XREAD", ["STREAMS", "developer", 0])
-    );
+    const res = await redis.xread("BLOCK", 0, "STREAMS", "developer", "0");
 
     // parse the results (which are returned in quite a nested format)
     let events = res ? res[0][1] : [];
@@ -23,9 +21,7 @@ const sub = async () => {
         console.log(thisEvent[1][eachKey].toString());
 
         // remove the consumed message
-        await redis.sendCommand(
-          new Redis.Command("XDEL", ["developer", thisEvent[0].toString()])
-        );
+        await redis.xdel("developer", thisEvent[0]);
       }
     }
   }

@@ -7,9 +7,7 @@ var redis = new Redis({
 
 async function pub() {
   // write an event to stream 'events', setting 'key1' to 'value1'
-  await redis.sendCommand(
-    new Redis.Command("XADD", ["developer", "*", "Tai Dev", "Coder"])
-  );
+  await redis.xadd("developer", "*", "Tai Dev", "Coder");
 
   redis.disconnect();
 }
