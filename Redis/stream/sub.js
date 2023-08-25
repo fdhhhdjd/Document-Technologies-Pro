@@ -4,10 +4,11 @@ var redis = new Redis({
   port: 6379,
   host: "localhost",
 });
-async function sub() {
+
+const sub = async () => {
   while (1) {
     // read events from the beginning of stream 'events'
-    let res = await redis.sendCommand(
+    const res = await redis.sendCommand(
       new Redis.Command("XREAD", ["STREAMS", "developer", 0])
     );
 
@@ -28,6 +29,6 @@ async function sub() {
       }
     }
   }
-}
+};
 
 sub();
