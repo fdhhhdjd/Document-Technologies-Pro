@@ -17,6 +17,10 @@ const dataDummy = [
     name: "Nguyen Tan Hao",
     age: 22,
   },
+  {
+    name: "Dinh Dong Tam",
+    age: 12,
+  },
 ];
 
 const pubMessage = () => {
