@@ -17,7 +17,7 @@ const storeLocations = [
 ];
 
 app.get('/', (req, res) => {
-    console.info(`Add Geo Redis:::`);
+    console.info(`Add Geo Redis::::`);
 
     // Add Geo data for every store
     // Thêm dữ liệu GEO cho từng cửa hàng
